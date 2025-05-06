@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-neutral-300">
+    <form class="mx-60 bg-gray-600 p-10 h-auto my-20 rounded-lg">
+        <div class="studentID">
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Student ID</label>
+            <textarea id="message" rows="4"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Start with 'S' "></textarea>
+        </div>
+
+        <div class="major mb-5">
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a
+                major</label>
+            <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Choose Major</option>
+                <option>IT</option>
+                <option>Business Global</option>
+                <option>Accountant</option>
+                <option>Designer</option>
+            </select>
+        </div>
+
+        <div class="phonenumber">
+            <label for="phonenumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                Number</label>
+            <input type="number"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <div class="fullName">
+
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+            <textarea id="message" rows="4"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Write your Full Name"></textarea>
+
+        </div>
+
+    </form>
+</body>
+
+</html>
