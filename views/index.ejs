@@ -8,55 +8,85 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-neutral-300">
+<body>
     <button
         class="bg-transparent cursor-pointer mx-12 my-6 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
         onclick="window.location.href='/viewAll'">View
         All Student</button>
-    <form class="mx-60 bg-gray-600 p-10 h-auto my-20 rounded-lg space-y-5">
-        <h1 class="text-center block mb-2 text-lg font-medium text-gray-900 dark:text-white"> Student Form</h1>
+    <form class="mx-60 bg-neutral-100 drop-shadow-xl  p-10 h-auto my-20 rounded-lg space-y-5">
+        <h1 class="text-center block mb-2 text-lg font-medium text-gray-900 dark:text-black"> Student Form</h1>
         <div class="studentID">
-            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Student ID</label>
-            <input id="message" rows="4" pattern="[s][0-9][0-9][0-9][0-9]"
+            <label for="SID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Student ID</label>
+            <input id="SID" rows="4" pattern="[s][0-9][0-9][0-9][0-9]"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Start with 'S' " required></input>
         </div>
 
         <div class="major mb-5">
-            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a
+            <label for="majors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Select a
                 major</label>
-            <select id="countries"
+            <select id="majors"
                 class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required>
                 <option selected>Choose Major</option>
-                <option>IT</option>
-                <option>Business</option>
-                <option>Art</option>
+                <option value="IT">IT</option>
+                <option value="Business">Business</option>
+                <option value="Art">Art</option>
             </select>
         </div>
 
         <div class="phonenumber">
-            <label for="phonenumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+            <label for="phonenumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Phone
                 Number</label>
-            <input type="number"
+            <input type="number" id="phoneNumber"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required>
         </div>
         <div class="fullName">
 
-            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
-            <input id="message" rows="4"
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Full Name</label>
+            <input id="fullName" rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Write your Full Name" required></input>
 
         </div>
-        <button
+        <button id="submit"
             class="relative cursor-pointer inline-flex items-center justify-center p-0.5 mt-3 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
             <span
-                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent  ">
+                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-blue-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent  ">
                 Submit
             </span></button>
     </form>
 </body>
+<script>
+    let sID = document.getElementById('SID');
+    let major = document.getElementById('majors');
+    let phone_number = document.getElementById('phoneNumber');
+    let fullName = document.getElementById('fullName');
+
+    document.getElementById('submit').addEventListener('click', (e) => {
+        e.preventDefault();
+        const body = JSON.stringify({
+            sid: sID.value,
+            major: major.value,
+            phoneNumber: phone_number.value,
+            fullname: fullName.value
+        });
+        fetch('http://localhost:3000/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            body,
+        }).then((res) => res.json())
+            .then((json) => {
+                if (json == 200) {
+                    window.location.href = '/viewAll'
+                }
+            })
+    })
+
+
+</script>
 
 </html>

@@ -3,6 +3,7 @@ const router = express();
 const Controller = require('./controller');
 
 router.get('/', Controller.homePage);
+router.post('/', Controller.postStudent);
 router.get('/viewAll', Controller.viewAll);
 router.get('/studentDetail/:id', Controller.studentDetail);
 
