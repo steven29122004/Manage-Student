@@ -6,5 +6,6 @@ router.get('/', Controller.homePage);
 router.post('/', Controller.postStudent);
 router.get('/viewAll', Controller.viewAll);
 router.get('/studentDetail/:id', Controller.studentDetail);
+router.get('/api/studentDetail/:id', Controller.bindingStudent);
 
 module.exports = router;

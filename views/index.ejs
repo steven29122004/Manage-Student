@@ -28,7 +28,7 @@
             <select id="majors"
                 class="bg-gray-50 border border-gray-100 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required>
-                <option selected>Choose Major</option>
+                <option value="" disabled selected>Choose Major</option>
                 <option value="IT">IT</option>
                 <option value="Business">Business</option>
                 <option value="Art">Art</option>
@@ -59,10 +59,33 @@
     </form>
 </body>
 <script>
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    const { id } = params;
+
     let sID = document.getElementById('SID');
     let major = document.getElementById('majors');
     let phone_number = document.getElementById('phoneNumber');
     let fullName = document.getElementById('fullName');
+
+    const fetchAPIstudent = () => {
+        fetch(`http://localhost:3000/api/studentDetail/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            }
+        }).then((res) => res.json())
+            .then((json) => {
+                if (json.id) {
+                    sID.value = json.sid,
+                        major.value = json.major,
+                        phone_number.value = json.phoneNumber,
+                        fullName.value = json.fullname
+                }
+            })
+    };
+    fetchAPIstudent();
 
     document.getElementById('submit').addEventListener('click', (e) => {
         e.preventDefault();

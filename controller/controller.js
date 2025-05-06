@@ -5,12 +5,6 @@ let studentList = [
         major: 'IT',
         phoneNumber: '0826227677',
         fullname: 'Nguyen Trong Nhan'
-    }, {
-        id: 2,
-        sid: 's3123',
-        major: 'Business',
-        phoneNumber: '312123',
-        fullname: 'Nguyen Van Teo'
     }
 ]
 
@@ -36,4 +30,10 @@ exports.studentDetail = (req, res) => {
     const { id } = req.params;
     const studentDetails = studentList.find(item => item.id == id)
     res.render('studentDetail', { studentDetails })
+}
+
+exports.bindingStudent = (req, res) => {
+    const { id } = req.params;
+    const studentDetails = studentList.find(item => item.id == id)
+    res.json(studentDetails)
 }
