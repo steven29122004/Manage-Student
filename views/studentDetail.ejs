@@ -11,6 +11,9 @@
 <body>
     <div class="bg-neutral-100 mx-60 p-10 rounded-lg mt-15 drop-shadow-xl">
         <div class="px-4 sm:px-0">
+            <div id="IDstudent" class="hidden">
+                <%= studentDetails.id%>
+            </div>
             <h3 class="text-base/7 font-semibold text-gray-900">Student Information</h3>
             <p class="mt-1 max-w-2xl text-sm/6 text-gray-500">Personal details and application.</p>
         </div>
@@ -51,6 +54,9 @@
 
                     <button class="edit cursor-pointer hover:text-blue-400 hover:underline"
                         onclick="window.location.href='/?id=<%= studentDetails.id%>'">Edit</button>
+                    <button class="deleteBtn cursor-pointer hover:text-blue-400 hover:underline">
+                        Delete
+                    </button>
                 </div>
 
             </dl>
@@ -58,5 +64,21 @@
     </div>
 
 </body>
+<script>
+    const IDstudent = document.getElementById('IDstudent').innerHTML;
+
+
+    document.querySelector('.deleteBtn').addEventListener('click', () => {
+        fetch(`http://localhost:3000/studentDetail/${IDstudent}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            }
+        }).then((res) => res.json())
+            .then((json) => {
+                window.location.href = '/viewAll'
+            })
+    })
+</script>
 
 </html>

@@ -37,3 +37,10 @@ exports.bindingStudent = (req, res) => {
     const studentDetails = studentList.find(item => item.id == id)
     res.json(studentDetails)
 }
+
+exports.deleteStudent = (req, res) => {
+    const { id } = req.params;
+    const index = studentList.findIndex(item => item.id == id);
+    studentList.splice(index, 1);
+    res.json(200)
+}
