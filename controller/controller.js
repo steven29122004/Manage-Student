@@ -4,7 +4,8 @@ let studentList = [
         sid: 's3975',
         major: 'IT',
         phoneNumber: '0826227677',
-        fullname: 'Nguyen Trong Nhan'
+        fullname: 'Nguyen Trong Nhan',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtfkLP-PF7fVthqkcTyq5n9YQOGkqoj7zb2Q9J9Gx1iEGDHwbGId9PlJdv0vxsB2ITDk8&usqp=CAU'
     }
 ]
 

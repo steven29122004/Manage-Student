@@ -20,7 +20,7 @@
             <div>
                 <input id="SID" pattern="[sS]3[0-9]{3}"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Start with 'S' " required></input>
+                    placeholder="Start with S, s3975 for example (4 digits) " required></input>
                 <div id="alertSID"
                     class="hidden bg-red-100 mt-3 border border-red-400 text-red-700 px-4 py-3 rounded relative"
                     role="alert">
@@ -66,6 +66,17 @@
                 placeholder="Write your Full Name" required></input>
 
         </div>
+
+        <div class="image flex flex-col">
+            <label for="file-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Image
+                Upload</label>
+            <input type="text"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Paste here" id="file_input">
+        </div>
+
+
+
         <button id="submit"
             class="relative cursor-pointer inline-flex items-center justify-center p-0.5 mt-3 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
             <span
@@ -94,10 +105,14 @@
     });
     const { id } = params;
 
+
+
+
     let sID = document.getElementById('SID');
     let major = document.getElementById('majors');
     let phone_number = document.getElementById('phoneNumber');
     let fullName = document.getElementById('fullName');
+    let studentImg = document.getElementById('file_input');
 
 
 
@@ -146,7 +161,8 @@
             sid: sID.value,
             major: major.value,
             phoneNumber: phone_number.value,
-            fullname: fullName.value
+            fullname: fullName.value,
+            image: studentImg.value
         });
         if (id) {
             fetch(`http://localhost:3000/edit/${id}`, {
