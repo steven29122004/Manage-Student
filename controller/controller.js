@@ -22,6 +22,18 @@ exports.postStudent = (req, res) => {
 
 }
 
+exports.editStudent = (req, res) => {
+    const { id } = req.params;
+    const { body } = req;
+    const index = studentList.findIndex(item => item.id == id);
+    studentList[index].sid = body.sid;
+    studentList[index].major = body.major;
+    studentList[index].phoneNumber = body.phoneNumber;
+    studentList[index].fullname = body.fullname;
+    res.json(200);
+
+}
+
 exports.viewAll = (req, res) => {
     res.render('viewAll', { studentList })
 }
@@ -37,6 +49,9 @@ exports.bindingStudent = (req, res) => {
     const studentDetails = studentList.find(item => item.id == id)
     res.json(studentDetails)
 }
+
+
+
 
 exports.deleteStudent = (req, res) => {
     const { id } = req.params;

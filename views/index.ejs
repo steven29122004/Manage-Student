@@ -89,24 +89,46 @@
 
     document.getElementById('submit').addEventListener('click', (e) => {
         e.preventDefault();
+        if (!sID.value || !major.value || !phone_number.value || !fullName.value) {
+            alert('Please fill out the form!');
+            return;
+        };
         const body = JSON.stringify({
             sid: sID.value,
             major: major.value,
             phoneNumber: phone_number.value,
             fullname: fullName.value
         });
-        fetch('http://localhost:3000/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=UTF-8'
-            },
-            body,
-        }).then((res) => res.json())
-            .then((json) => {
-                if (json == 200) {
-                    window.location.href = '/viewAll'
-                }
+        if (id) {
+            fetch(`http://localhost:3000/edit/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json; Charset=UTF-8'
+                },
+                body,
+
             })
+                .then((res) => res.json())
+                .then((json) => {
+                    if (json == 200) {
+                        window.location.href = '/viewAll'
+                    }
+                })
+        } else {
+            fetch('http://localhost:3000/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8'
+                },
+                body,
+            }).then((res) => res.json())
+                .then((json) => {
+                    if (json == 200) {
+                        window.location.href = '/viewAll'
+                    }
+                })
+        }
+
     })
 
 
