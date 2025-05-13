@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const routerController = require('./controller/router');
 const port = 3000;
 
+const mongoDB = require('./database');
+mongoDB();
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
