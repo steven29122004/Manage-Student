@@ -35,10 +35,11 @@ exports.viewAll = async (req, res) => {
     res.render('viewAll', { student })
 }
 
-exports.studentDetail = (req, res) => {
+exports.studentDetail = async (req, res) => {
     const { id } = req.params;
-    const studentDetails = studentList.find(item => item.id == id)
-    res.render('studentDetail', { studentDetails })
+    const studentDetailed = await studentEntity.findById(id);
+
+    res.render('studentDetail', { studentDetailed })
 }
 
 exports.bindingStudent = (req, res) => {

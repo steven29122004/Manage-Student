@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
     <div class="bg-neutral-100 mx-60 p-10 rounded-lg mt-15 drop-shadow-xl">
+
         <div class="px-4 sm:px-0">
             <div id="IDstudent" class="hidden">
-                <%= studentDetails.id%>
+                <%= studentDetailed.id%>
             </div>
             <h3 class="text-base/7 font-semibold text-gray-900">Student Information</h3>
             <p class="mt-1 max-w-2xl text-sm/6 text-gray-500">Personal details and application.</p>
@@ -22,31 +22,31 @@
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-b-4 border-gray-300">
                     <dt class="text-sm/6 font-medium text-gray-900 border-r-4 border-gray-300">Student ID</dt>
                     <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <%= studentDetails.sid%>
+                        <%= studentDetailed.sid%>
                     </dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-b-4 border-gray-300">
                     <dt class="text-sm/6 font-medium text-gray-900 border-r-4 border-gray-300">Major</dt>
                     <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <%= studentDetails.major%>
+                        <%= studentDetailed.major%>
                     </dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-b-4 border-gray-300">
                     <dt class="text-sm/6 font-medium text-gray-900 border-r-4 border-gray-300">Phone Number</dt>
                     <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <%= studentDetails.phoneNumber%>
+                        <%= studentDetailed.phoneNumber%>
                     </dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-b-4 border-gray-300">
                     <dt class="text-sm/6 font-medium text-gray-900 border-r-4 border-gray-300">Full Name</dt>
                     <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <%= studentDetails.fullname%>
+                        <%= studentDetailed.fullname%>
                     </dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-b-4 border-gray-300">
                     <dt class="text-sm/6 font-medium text-gray-900 border-r-4 border-gray-300">Image</dt>
                     <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <img src="<%= studentDetails.image%>" class="w-32 mx-auto">
+                        <img src="<%= studentDetailed.image%>" class="w-32 mx-auto">
 
                     </dd>
                 </div>
@@ -60,7 +60,7 @@
                         </span></button>
 
                     <button class="edit cursor-pointer hover:text-blue-400 hover:underline"
-                        onclick="window.location.href='/?id=<%= studentDetails.id%>'">Edit</button>
+                        onclick="window.location.href='/?id=<%= studentDetailed.id%>'">Edit</button>
                     <button
                         class="deleteBtn cursor-pointer p-2 rounded-lg text-white bg-blue-500 transition delay-150 duration-300 ease-in-out  hover:scale-110 hover:bg-red-500">
                         Delete

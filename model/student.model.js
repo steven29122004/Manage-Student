@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 
 const StudentSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true
-    },
+    // _id: {
+    //     type: String,
+    //     required: true
+    // },
+    // id: {
+    //     type: String,
+    //     required: true,
+    //     unique: true
+    // },
     sid: {
         type: String,
         required: true
