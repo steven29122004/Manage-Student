@@ -1,32 +1,51 @@
 let studentList = [];
 
 const studentEntity = require('../model/student.model');
-
+const ResponseType = require('../dto/response.type');
 exports.homePage = async (req, res) => {
     const student = await studentEntity.find();
 
     res.render('index', { studentList: student, title: 'Form' });
 }
 
-exports.postStudent = (req, res) => {
-    const { body } = req;
-    studentList.push({
-        id: studentList.length + 1,
-        ...body,
-    })
-    res.json(200);
+exports.postStudent = async (req, res) => {
+
+    try {
+        const { body: {
+            sid,
+            major,
+            phoneNumber,
+            fullname,
+            image
+        } } = req;
+        const studentPost = new studentEntity({
+            sid,
+            major,
+            phoneNumber,
+            fullname,
+            image
+        });
+        await studentPost.save();
+
+        res.json(new ResponseType(true).success());
+    } catch (error) {
+        console.log(error);
+        res.json(new ResponseType(null).error())
+
+    }
+
 
 }
 
 exports.editStudent = (req, res) => {
-    const { id } = req.params;
-    const { body } = req;
-    const index = studentList.findIndex(item => item.id == id);
-    studentList[index].sid = body.sid;
-    studentList[index].major = body.major;
-    studentList[index].phoneNumber = body.phoneNumber;
-    studentList[index].fullname = body.fullname;
-    res.json(200);
+    // const { id } = req.params;
+    // const { body } = req;
+    // const index = studentList.findIndex(item => item.id == id);
+    // studentList[index].sid = body.sid;
+    // studentList[index].major = body.major;
+    // studentList[index].phoneNumber = body.phoneNumber;
+    // studentList[index].fullname = body.fullname;
+    // res.json(200);
 
 }
 
@@ -51,9 +70,16 @@ exports.bindingStudent = (req, res) => {
 
 
 
-exports.deleteStudent = (req, res) => {
-    const { id } = req.params;
-    const index = studentList.findIndex(item => item.id == id);
-    studentList.splice(index, 1);
-    res.json(200)
+exports.deleteStudent = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteStudent = await studentEntity.findByIdAndDelete(id);
+        if (!deleteStudent) {
+            res.json(new ResponseType(null).error())
+        }
+        res.status(200).json(new ResponseType(null).success());
+    } catch (error) {
+        res.json(new ResponseType(null).error())
+    }
+
 }

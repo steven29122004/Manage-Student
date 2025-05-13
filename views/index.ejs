@@ -189,8 +189,8 @@
                 },
                 body,
             }).then((res) => res.json())
-                .then((json) => {
-                    if (json == 200) {
+                .then(({ code }) => {
+                    if (code == 200) {
                         window.location.href = '/viewAll'
                     }
                 })

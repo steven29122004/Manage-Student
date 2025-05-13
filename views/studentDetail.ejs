@@ -12,7 +12,7 @@
 
         <div class="px-4 sm:px-0">
             <div id="IDstudent" class="hidden">
-                <%= studentDetailed.id%>
+                <%= studentDetailed._id%>
             </div>
             <h3 class="text-base/7 font-semibold text-gray-900">Student Information</h3>
             <p class="mt-1 max-w-2xl text-sm/6 text-gray-500">Personal details and application.</p>
@@ -73,7 +73,7 @@
 
 </body>
 <script>
-    const IDstudent = document.getElementById('IDstudent').innerHTML;
+    const IDstudent = document.getElementById('IDstudent').textContent.trim();
 
 
     document.querySelector('.deleteBtn').addEventListener('click', () => {
