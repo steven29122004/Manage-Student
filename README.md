@@ -300,3 +300,15 @@ db.student.createIndex({ sid: 1 }, { unique: true });
 - **Tạo chỉ mục mới**: `db.student.createIndex({ sid: 1 }, { unique: true })` để đảm bảo `sid` là duy nhất.
 
 Hãy thêm các lệnh này vào file `README.md` nếu cần lưu ý cho các lần phát triển sau. Nếu cần hỗ trợ thêm, hãy cho mình biết! 😊
+
+
+----------------------
+Câu trả lời của ChatGPT về vấn đề cốt lõi:
+
+Đúng vậy, vấn đề này xuất phát từ MongoDB. Cụ thể:
+
+- **Nguyên nhân chính**: Trường `id` trong cơ sở dữ liệu MongoDB có chỉ mục **duy nhất** (unique), nhưng giá trị của nó là `null`. Khi thêm tài liệu mới mà không gán giá trị cho `id`, MongoDB mặc định để `id: null`, dẫn đến lỗi trùng lặp.
+
+- **Giải pháp**: Xóa chỉ mục `id_1` và loại bỏ trường `id` không cần thiết, sau đó dựa vào `_id` mặc định của MongoDB để quản lý các tài liệu.
+
+Vấn đề này không phải do mã nguồn mà do cấu hình hoặc dữ liệu trong MongoDB.
