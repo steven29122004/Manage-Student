@@ -37,15 +37,25 @@ exports.postStudent = async (req, res) => {
 
 }
 
-exports.editStudent = (req, res) => {
-    // const { id } = req.params;
-    // const { body } = req;
-    // const index = studentList.findIndex(item => item.id == id);
-    // studentList[index].sid = body.sid;
-    // studentList[index].major = body.major;
-    // studentList[index].phoneNumber = body.phoneNumber;
-    // studentList[index].fullname = body.fullname;
-    // res.json(200);
+exports.editStudent = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { body } = req;
+        const updateProduct = await studentEntity.findByIdAndUpdate(id, {
+            sid: body.sid,
+            major: body.major,
+            phoneNumber: body.phoneNumber,
+            fullname: body.fullname,
+            image: body.image
+        })
+        if (!updateProduct) {
+            res.json(new ResponseType(null).error())
+        }
+        res.json(new ResponseType(updateProduct).success());
+    } catch (error) {
+        res.json(new ResponseType(null).error())
+    }
+
 
 }
 
