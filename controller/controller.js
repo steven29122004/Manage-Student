@@ -61,10 +61,15 @@ exports.studentDetail = async (req, res) => {
     res.render('studentDetail', { studentDetailed })
 }
 
-exports.bindingStudent = (req, res) => {
-    const { id } = req.params;
-    const studentDetails = studentList.find(item => item.id == id)
-    res.json(studentDetails)
+exports.bindingStudent = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const bindingStudent = await studentEntity.findById(id);
+        res.json(new ResponseType(bindingStudent).success());
+    } catch (error) {
+        res.json(new ResponseType(null).error())
+    }
+
 }
 
 

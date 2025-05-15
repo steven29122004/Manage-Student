@@ -125,12 +125,12 @@
                 'Content-Type': 'application/json; charset=UTF-8'
             }
         }).then((res) => res.json())
-            .then((json) => {
-                if (json.id) {
-                    sID.value = json.sid,
-                        major.value = json.major,
-                        phone_number.value = json.phoneNumber,
-                        fullName.value = json.fullname
+            .then(({ data, message, code }) => {
+                if (code == 200) {
+                    sID.value = data.sid,
+                        major.value = data.major,
+                        phone_number.value = data.phoneNumber,
+                        fullName.value = data.fullname
                 }
             })
     };
@@ -176,8 +176,8 @@
 
             })
                 .then((res) => res.json())
-                .then((json) => {
-                    if (json == 200) {
+                .then(({ code }) => {
+                    if (code == 200) {
                         window.location.href = '/viewAll'
                     }
                 })
